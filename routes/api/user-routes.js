@@ -56,6 +56,8 @@ router.put('/:id', (req, res) => {
 // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
 // if req.body has exact key/value pairs to match the model, you can just use `req.body` instead
     User.update(req.body, {
+        //individualHooks: true is required to make the bcrypt function work in User.js
+        individualHooks: true,
         where: {
             id: req.params.id
         }
