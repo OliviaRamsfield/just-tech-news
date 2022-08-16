@@ -1,5 +1,6 @@
 //import
 const User = require('./User')
+const Post = require('./Post')
 
 //export
-module.exports = { User }
+module.exports = { User, Post }
