@@ -17,3 +17,7 @@ app.use(routes)
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'))
 })
+
+//Using force: true makes the database connection sync with the model definitions and associations. 
+//Tables must re-create themselves if there are any association changes.
+//Once you've made association changes it should return back to force: false so that tables don't drop each time on reload
