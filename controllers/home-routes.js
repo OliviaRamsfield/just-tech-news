@@ -4,6 +4,8 @@ const { Post, User, Comment} = require('../models');
 
 //we want to render the homepage.handlebars template and feed into main.handlebars template
 router.get('/', (req, res) => {
+  console.log(req.session);
+
     Post.findAll({
       attributes: [
         'id',
@@ -38,5 +40,15 @@ router.get('/', (req, res) => {
         res.status(500).json(err);
       });
   });
+
+//render login/sign-up page
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
 
 module.exports = router;
